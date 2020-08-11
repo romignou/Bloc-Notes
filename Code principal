@@ -1,0 +1,100 @@
+#import des modules tkinter
+from tkinter import *
+import tkinter as tk
+from tkinter import filedialog as fd
+
+
+#génération de la fenêtre parent
+window = tk.Tk()
+window.minsize(width=500, height=615)
+window.maxsize(width=500, height=615)
+
+
+#titre
+window.title("Bloc-Notes")
+
+
+#réinitialisation de la police
+fontType = ""
+
+
+#empêchement de la fermeture de la fenêtre parent
+def preventClose():
+    pass
+
+window.protocol("WM_DELETE_WINDOW", preventClose)
+
+
+#création du champ de saisie principal
+textExample=tk.Text(window, height=16)
+textExample.configure(font=(fontType, 16), cursor="target", background="#F7F7F7")
+textExample.pack()
+
+
+#choix des polices de caractères
+def Arial():
+    global fontType
+    fontType = "Arial"
+    textExample.configure(font=(fontType, 16))
+
+def Verdana():
+    global fontType
+    fontType = "Verdana"
+    textExample.configure(font=(fontType, 16))
+
+def Times():
+    global fontType
+    fontType = "Times"
+    textExample.configure(font=(fontType, 16))
+
+arialChoice = tk.Button(window, text="Arial", font="Arial", command=Arial)
+arialChoice.pack(fill="x")
+verdanaChoice = tk.Button(window, text="Verdana", font="Verdana", command=Verdana)
+verdanaChoice.pack(fill="x")
+fixedsysChoice = tk.Button(window, text="Times New Roman", font="Times", command=Times)
+fixedsysChoice.pack(fill="x")
+
+
+#bouton effacer
+def clear():
+    textExample.delete(1.0, END)
+
+clearButton = tk.Button(window, text="Tout effacer", font="Helvetica", background="gray", command=clear)
+clearButton.pack()
+
+
+#séparateur
+LabelQuit = Label(window, text="")
+LabelQuit.pack()
+
+
+#quitter
+def quitConfirmation():
+    quitwindow = Toplevel(window)
+    quitwindow.minsize(width=400, height=100)
+    quitwindow.maxsize(width=400, height=100)
+    quitwindow.title("Êtes-vous certain de vouloir quitter ?")
+
+    quitwindow.protocol("WM_DELETE_WINDOW", preventClose)
+    
+    quitLabel = Label(quitwindow, text="Êtes-vous certain de vouloir quitter ?", font="Helvetica")
+    quitLabel.pack()
+    quitButton = Button(quitwindow, text="Oui", width=10, font="arial", background="#FF886E", command=window.destroy)
+    quitButton.pack()
+    cancelButton = Button(quitwindow, text="Annuler", width=10, font="arial", background="#C0FFBB", command=quitwindow.destroy)
+    cancelButton.pack()
+    
+ButtonQuit = Button(window, text="FERMER", width=30, font="arial", background="red", command=quitConfirmation)
+ButtonQuit.pack()
+
+
+#pour sauvegarder un fichier réalisé directement dans le programme [J'AI BESOIN D'AIDE ICI]
+def Save():
+    fd.asksaveasfilename()
+
+Save = Button(window, text="Sauvegarder", width=30, font="arial", command=Save)
+Save.pack()
+
+
+#commande indispensable
+window.mainloop()
