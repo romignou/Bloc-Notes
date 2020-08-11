@@ -4,4 +4,7 @@ créer des GUIs. Vous êtes les bienvenus pour modifier le code afin d'implémen
 
 Voici le zip du logiciel. Il vous faudra dézipper puis exécuter notepad.exe. https://www.mediafire.com/file/xccrxffy54a77pb/BLOCNOTES+(2).zip/file
 
+Etant donné que ce logiciel utilise Tkinter, il vous faudra l'installer s'il ne l'est pas. (normalement il devrait l'être mais on ne sait jamais) 
+Sinon tapez "pip install tkinter" dans votre cmd/terminal pour l'installer sur votre ordi.
+
 Bon séjour ! :)
